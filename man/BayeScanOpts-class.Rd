@@ -12,6 +12,8 @@ This class stores input parameters for the BayeScan program.
 \describe{
 \item{\code{threads}}{\code{numeric} number of threads used for computation. Defaults to 1.}
 
+\item{\code{reps}}{\code{numeric} number of replicate runs. Defaults to 3.}
+
 \item{\code{n}}{\code{numeric} number of outputted iterations. Defaults to 5000.}
 
 \item{\code{thin}}{\code{numeric} thinning interval size. Defaults to 10.}
@@ -22,7 +24,7 @@ This class stores input parameters for the BayeScan program.
 
 \item{\code{burn}}{\code{numeric} burn-in length. Defaults to 50000.}
 
-\item{\code{threshold}}{\code{numeric} threshold probability used to classify loci as adaptive. Defaults to 0.95.}
+\item{\code{fdr}}{\code{numeric} false discovery rate used to classify loic as adaptive. Defaults to 0.1.}
 }}
 \seealso{
 \code{\link{BayeScanOpts}}.

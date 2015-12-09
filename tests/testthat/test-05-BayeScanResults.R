@@ -2,7 +2,7 @@ test_that('read.BayeScanResults', {
 	# create data
 	dir<-tempdir()
 	path<-tempfile(tmpdir=dir, fileext='.txt')
-	bo <-BayeScanOpts(threshold=0.5,threads=1,n=10,thin=1,nbp=5,pilot=5,burn=50)
+	bo <-BayeScanOpts(fdr=0.5,threads=1,reps=1,n=10,thin=1,nbp=5,pilot=5,burn=50)
 	bd <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 	write.BayeScanData(bd,path)
 	# identify bayescan path
@@ -30,8 +30,10 @@ test_that('read.BayeScanResults', {
 		)
 	)
 	# try reading results back into R
-	results <- read.BayeScanResults(path,dir,bo@threshold)
+	results <- BayeScanResults(replicates=list(read.BayeScanReplicate(path,dir,bo@fdr)))
 	# methods
 	print(results)
 	results
+	n.loci(results)
+	n.pop(results)
 })

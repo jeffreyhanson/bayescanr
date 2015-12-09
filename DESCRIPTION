@@ -24,8 +24,7 @@ SystemRequirements: C++11
 Suggests:
     knitr,
     rmarkdown
-BinaryFiles:
-    'BayeScan2.1_linux32bits',
+BinaryFiles: 'BayeScan2.1_linux32bits',
     'BayeScan2.1_linux64bits',
     'BayeScan2.1_macos64bits',
     'BayeScan2.1_win32bits_cmd_line.exe'
@@ -34,6 +33,7 @@ Collate:
     'bayescanr-internal.R'
     'misc.R'
     'generics.R'
+    'BayeScanReplicate.R'
     'BayeScanResults.R'
     'BayeScanData.R'
     'BayeScanOpts.R'

@@ -4,14 +4,16 @@
 \alias{run.BayeScan}
 \title{Run BayeScan}
 \usage{
-run.BayeScan(x, threads = 1, n = 5000, thin = 10, nbp = 20,
-  pilot = 5000, burn = 50000, threshold = 0.95, dir = tempdir(),
+run.BayeScan(x, threads = 1, reps = 3, n = 5000, thin = 10, nbp = 20,
+  pilot = 5000, burn = 50000, fdr = 0.1, dir = tempdir(),
   clean = TRUE)
 }
 \arguments{
 \item{x}{\code{BayeScanData} object.}
 
 \item{threads}{\code{numeric} number of threads used for computation. Defaults to 1.}
+
+\item{reps}{\code{numeric} number of replicate runs. Defaults to 3.}
 
 \item{n}{\code{numeric} number of outputted iterations. Defaults to 5000.}
 
@@ -23,7 +25,7 @@ run.BayeScan(x, threads = 1, n = 5000, thin = 10, nbp = 20,
 
 \item{burn}{\code{numeric} burn-in length. Defaults to 50000.}
 
-\item{threshold}{\code{numeric} threshold probability used to classify loci as adaptive. Defaults to 0.95.}
+\item{fdr}{\code{numeric} false discovery rate used to classify loic as adaptive. Defaults to 0.1.}
 
 \item{dir}{\code{character} with directory to use for analysis.}
 

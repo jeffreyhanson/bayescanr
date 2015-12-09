@@ -89,7 +89,7 @@ loci.subset.BayeScanAnalysis <- function(x, loci) {
 		if (loci=='all') {
 			return(x@data)
 		} else {
-			return(loci.subset(x@data, x@results@fst$type==loci))
+			return(loci.subset(x@data, x@results@summary$type==loci))
 		}
 	} else {
 		return(loci.subset(x@data, loci))
@@ -111,10 +111,10 @@ loci.subset.BayeScanAnalysis <- function(x, loci) {
 #' dat <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 #' x <- run.BayeScan(dat, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
 #' @export
-run.BayeScan<-function(x, threads=1, n=5000, thin=10, nbp=20, pilot=5000, burn=50000, threshold=0.95, dir=tempdir(), clean=TRUE) {
+run.BayeScan<-function(x, threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000, burn=50000, fdr=0.1, dir=tempdir(), clean=TRUE) {
 	## initialization
 	# argument checks
-	opts <- BayeScanOpts(threads=threads, n=n, thin=thin, nbp=nbp, pilot=pilot, burn=burn, threshold=threshold)
+	opts <- BayeScanOpts(threads=threads, reps=reps, n=n, thin=thin, nbp=nbp, pilot=pilot, burn=burn, fdr=fdr)
 	expect_is(x, 'BayeScanData')
 	# set BayeScan file path
 	bayescan.path <- switch(
@@ -131,26 +131,29 @@ run.BayeScan<-function(x, threads=1, n=5000, thin=10, nbp=20, pilot=5000, burn=5
 	dat.path <- tempfile(tmpdir=dir, fileext='.txt')
 	write.BayeScanData(x, dat.path)
 	# run BayesScan analysis
-	system(
-		paste0(
-			bayescan.path, ' ',
-			dat.path,
-			' -od ',dir,
-			' -threads ',opts@threads,
-			' -n ',opts@n,
-			' -thin ',opts@thin,
-			' -nbp ',opts@nbp,
-			' -pilot ',opts@pilot,
-			' -burn ',opts@burn
+	replicates <- lapply(seq_len(opts@reps), function(i) {
+		system(
+			paste0(
+				bayescan.path, ' ',
+				dat.path,
+				' -od ',dir,
+				' -threads ',opts@threads,
+				' -n ',opts@n,
+				' -thin ',opts@thin,
+				' -nbp ',opts@nbp,
+				' -pilot ',opts@pilot,
+				' -burn ',opts@burn
+			)
 		)
-	)
+		return(read.BayeScanReplicate(dat.path,dir,fdr=opts@fdr))
+	})
 	## exports
 	# construct BayeScanAnalysis object
 	return(
 		BayeScanAnalysis(
 			opts=opts,
 			data=x,
-			results=read.BayeScanResults(dat.path,dir,threshold=opts@threshold)
+			results=BayeScanResults(replicates=replicates)
 		)
 	)
 }

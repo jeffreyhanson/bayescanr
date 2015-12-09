@@ -4,24 +4,20 @@
 \alias{BayeScanResults}
 \title{Create BayeScanResults object}
 \usage{
-BayeScanResults(fst, mcmc, acceptance.rate, verification)
+BayeScanResults(summary = NULL, replicates)
 }
 \arguments{
-\item{fst}{\code{data.frame} object containing output results ('filename_fst.txt').}
+\item{summary}{\code{data.frame} object containing overall results from BayeScan replicates.}
 
-\item{mcmc}{\code{data.frame} object containing Markov chain Monte Carlo information ('filename.sel').}
-
-\item{acceptance.rate}{\code{data.frame} object with information on the evolution of the acceptance rate ('filename_AccRte.txt').}
-
-\item{verification}{\code{character} object with verification diagnostics ('file_Verif.txt').}
+\item{replicates}{\code{list} of \code{BayeScanReplicate} objects.}
 }
 \value{
-\code{\link{BayeScanResults}}.
+\code{\link{BayeScanReplicate}}.
 }
 \description{
 This function creates a new \code{BayeScanResults} object.
 }
 \seealso{
-\code{\link{BayeScanResults-class}}.
+\code{\link{BayeScanReplicate-class}}.
 }
 
