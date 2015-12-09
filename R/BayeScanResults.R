@@ -1,4 +1,5 @@
-#' @include bayescanr-internal.R misc.R
+#' @include bayescanr-internal.R misc.R generics.R
+NULL
 
 #' BayeScanResults: An S4 class to results from BayeScan
 #'
@@ -45,7 +46,6 @@ setClass(
 #'
 #' This function creates a new \code{BayeScanResults} object.
 #'
-
 #' @seealso \code{\link{BayeScanResults-class}}.
 #' @return \code{\link{BayeScanResults}}.
 #' @export

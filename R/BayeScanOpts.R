@@ -1,4 +1,5 @@
-#' @include bayescanr-internal.R misc.R
+#' @include bayescanr-internal.R misc.R generics.R
+NULL
 
 #' BayeScanOpts: An S4 class to represent BayeScan parameters
 #'

@@ -1,11 +1,12 @@
 #' @include bayescanr-internal.R misc.R
+NULL
 
 #' Number of loci
 #'
 #' This function returns the number of loci in a \code{BayeScan} object.
-#' 
+#'
 #' @param x \code{BayeScanData}, \code{BayeScan}.
-#' @return \code{integer}
+#' @return \code{integer}.
 #' @export
 n.loci <- function(x) UseMethod('n.loci')
 
@@ -14,7 +15,7 @@ n.loci <- function(x) UseMethod('n.loci')
 #' This function returns the number of populations in a \code{BayeScan} object.
 #' 
 #' @param x \code{BayeScanData}, \code{BayeScan}.
-#' @return \code{integer}
+#' @return \code{integer}.
 #' @export
 n.pop <- function(x) UseMethod('n.pop')
 
@@ -23,7 +24,7 @@ n.pop <- function(x) UseMethod('n.pop')
 #' This function returns the number of samples in a \code{BayeScan} object.
 #' 
 #' @param x \code{BayeScanData}, \code{BayeScan}.
-#' @return \code{integer}
+#' @return \code{integer}.
 #' @export
 n.samples <- function(x) UseMethod('n.samples')
 
@@ -32,7 +33,7 @@ n.samples <- function(x) UseMethod('n.samples')
 #' This function returns the unique population names in a \code{BayeScan} object.
 #' 
 #' @param x \code{BayeScanData}, \code{BayeScan}.
-#' @return \code{character}
+#' @return \code{character}.
 #' @export
 pop.names <- function(x) UseMethod('pop.names')
 
@@ -41,7 +42,7 @@ pop.names <- function(x) UseMethod('pop.names')
 #' This function returns the population name that each sample belongs to in a \code{BayeScan} object.
 #' 
 #' @param x \code{BayeScanData}, \code{BayeScan}.
-#' @return \code{character}
+#' @return \code{character}.
 #' @export
 sample.pops <- function(x) UseMethod('sample.pops')
 
@@ -51,7 +52,7 @@ sample.pops <- function(x) UseMethod('sample.pops')
 #' 
 #' @param x \code{BayeScanData}, \code{BayeScan}.
 #' @param populations \code{character} name of populations to subset.
-#' @return \code{BayeScanData}
+#' @return \code{BayeScanData}.
 #' @export
 pop.subset <- function(x, populations) UseMethod('pop.subset')
 
@@ -61,7 +62,7 @@ pop.subset <- function(x, populations) UseMethod('pop.subset')
 #' 
 #' @param x \code{BayeScanData}, or \code{BayeScan}.
 #' @param type \code{numeric} index of loci to subset. If \code{x} is a \code{BayeScan} object, then a \code{character} denoting the type of loci to subset. Valid arguments are 'adaptive', or 'neutral'. 
-#' @return \code{BayeScanData}
+#' @return \code{BayeScanData}.
 #' @export
 loci.subset <- function(x, type) UseMethod('loci.subset')
 

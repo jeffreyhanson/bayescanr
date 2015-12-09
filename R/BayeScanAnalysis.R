@@ -1,4 +1,5 @@
-#' @include bayescanr-internal.R misc.R BayeScanOpts.R BayeScanData.R BayeScanResults.R
+#' @include bayescanr-internal.R misc.R generics.R BayeScanOpts.R BayeScanData.R BayeScanResults.R
+NULL
 
 #' BayeScanAnalysis: An S4 class to represent inputs and outputs from BayeScan
 #'

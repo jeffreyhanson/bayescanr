@@ -1,5 +1,6 @@
 #' @include bayescanr-internal.R misc.R generics.R
- 
+NULL
+
 #' BayeScanData: An S4 class to represent input data for BayeScan
 #'
 #' This class stores input data for the BayeScan program.

@@ -18,7 +18,7 @@ loci.subset(x, type)
 \item{type}{\code{numeric} index of loci to subset. If \code{x} is a \code{BayeScan} object, then a \code{character} denoting the type of loci to subset. Valid arguments are 'adaptive', or 'neutral'.}
 }
 \value{
-\code{BayeScanData}
+\code{BayeScanData}.
 }
 \description{
 This function returns a subset of loci in a \code{BayeScan} object.

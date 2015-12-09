@@ -15,7 +15,7 @@ pop.subset(x, populations)
 \item{populations}{\code{character} name of populations to subset.}
 }
 \value{
-\code{BayeScanData}
+\code{BayeScanData}.
 }
 \description{
 This function returns a subset of populations in a \code{BayeScan} object.
