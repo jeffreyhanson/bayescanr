@@ -1,0 +1,36 @@
+Package: bayescanr
+Type: Package
+Title: BayeScan Analysis in R
+Version: 0.0.1
+Date: 2015-12-09
+Authors@R: c(person(c("Jeffrey", "O"), "Hanson", email='jeffrey.hanson@uqconnect.edu.au', role = c("aut", "cre")),
+	person(c("Jonathon", "R"), "Rhodes", role = c("aut")),
+	person(c("Hugh", "P"), "Possingham", role = c("aut")),
+	person(c("Richard", "A"), "Fuller", role = c("aut")))
+Description: Detect natural selection from population-based genetic data.
+    Currently, only binary AFLP data is supported.
+Imports:
+    utils,
+    data.table,
+    cluster,
+    vegan,
+    testthat
+Depends:
+    R(>= 3.1.0)
+LazyData: true
+License: GPL-3
+VignetteBuilder: knitr
+SystemRequirements: C++11
+Suggests:
+    knitr,
+    testthat
+Collate:
+    'dependencies.R'
+    'bayescanr-internal.R'
+    'misc.R'
+    'BayeScanResults.R'
+    'generics.R'
+    'BayeScanData.R'
+    'BayeScanOpts.R'
+    'BayeScanAnalysis.R'
+RoxygenNote: 5.0.1
