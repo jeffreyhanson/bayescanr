@@ -1,7 +1,7 @@
 Package: bayescanr
 Type: Package
 Title: BayeScan Analysis in R
-Version: 0.0.1
+Version: 1.0.0
 Date: 2015-12-09
 Authors@R: c(person(c("Jeffrey", "O"), "Hanson", email='jeffrey.hanson@uqconnect.edu.au', role = c("aut", "cre")),
 	person(c("Jonathon", "R"), "Rhodes", role = c("aut")),
