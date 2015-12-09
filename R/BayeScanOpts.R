@@ -44,7 +44,7 @@ setClass(
 				return(invisible())
 		})
 		# check that threads is not higher than the number of threads on cpu
-		expect_true(object@threads<detectCores())
+		expect_true(object@threads <= detectCores())
 		return(TRUE)
 	}
 )
