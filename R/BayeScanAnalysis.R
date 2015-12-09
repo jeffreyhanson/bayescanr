@@ -96,7 +96,6 @@ loci.subset.BayeScanAnalysis <- function(x, loci) {
 	}
 }
 
-
 #' Run BayeScan
 #'
 #' This function analysis data using BayeScan.
