@@ -10,13 +10,13 @@ This class stores results from the BayeScan program.
 \section{Slots}{
 
 \describe{
-\item{\code{fst}}{\code{data.frame}}
+\item{\code{fst}}{\code{data.frame} object containing output results ('filename_fst.txt').}
 
-\item{\code{mcmc}}{\code{data.frame}}
+\item{\code{mcmc}}{\code{data.frame} object containing Markov chain Monte Carlo information ('filename.sel').}
 
-\item{\code{acceptance.rate}}{\code{data.frame}}
+\item{\code{acceptance.rate}}{\code{data.frame} object with information on the evolution of the acceptance rate ('filename_AccRte.txt').}
 
-\item{\code{verification}}{\code{data.frame}}
+\item{\code{verification}}{\code{character} object with verification diagnostics ('file_Verif.txt').}
 }}
 \seealso{
 \code{\link{BayeScanResults}}.

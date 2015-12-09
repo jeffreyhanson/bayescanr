@@ -35,7 +35,7 @@ This function analysis data using BayeScan.
 \examples{
 # run BayeScan using low number of iterations
 dat <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
-x <- run.BayeScan(x, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
+x <- run.BayeScan(dat, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
 }
 \seealso{
 \code{BayeScanData}, \code{BayeScanOpts}.

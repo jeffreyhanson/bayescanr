@@ -10,7 +10,7 @@ mds(x, metric, type, ...)
 
 \method{mds}{BayeScanData}(x, metric = "gower", type = "all", ...)
 
-\method{mds}{BayeScanAnalysis}(x, metric, type, ...)
+\method{mds}{BayeScanAnalysis}(x, metric = "gower", type = "all", ...)
 }
 \arguments{
 \item{x}{\code{BayeScanData} object.}
@@ -32,9 +32,9 @@ The \code{link[cluster]{daisy}} function is used to calculate distances because 
 }
 \examples{
 # run BayeScan using low number of iterations
-dat <- read.BayeScanData('int/Data_Meirmans_et_al_IntrabioDiv/Androsace_obtusifolia_AFLP.dat')
-x <- run.BayeScan(x, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
-z <- mds(x, metric='gower' k=2)
+dat <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
+x <- run.BayeScan(dat, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
+z <- mds(x, metric='gower', k=2)
 }
 \seealso{
 \code{link[cluster]{daisy}}, \code{link[vegan]{metaMDS}}.

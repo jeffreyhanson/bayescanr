@@ -18,7 +18,7 @@ This function writes data for BayeScan.
 This code is based on the R code distributed with BayeScan (version 2.1) for converting binary FSTAT files to the BayeScan data format.
 }
 \examples{
-x <- read.BayeScanData('int/Data_Meirmans_et_al_IntrabioDiv/Androsace_obtusifolia_AFLP.dat')
+x <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 write.BayeScanData(x, tempfile(fileext='txt'))
 }
 \seealso{

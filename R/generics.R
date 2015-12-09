@@ -61,10 +61,10 @@ pop.subset <- function(x, populations) UseMethod('pop.subset')
 #' This function returns a subset of loci in a \code{BayeScan} object.
 #' 
 #' @param x \code{BayeScanData}, or \code{BayeScan}.
-#' @param type \code{numeric} index of loci to subset. If \code{x} is a \code{BayeScan} object, then a \code{character} denoting the type of loci to subset. Valid arguments are 'adaptive', or 'neutral'. 
+#' @param loci \code{numeric} index of loci to subset. If \code{x} is a \code{BayeScan} object, then a \code{character} denoting the type of loci to subset. Valid arguments are 'adaptive', or 'neutral'. 
 #' @return \code{BayeScanData}.
 #' @export
-loci.subset <- function(x, type) UseMethod('loci.subset')
+loci.subset <- function(x, loci) UseMethod('loci.subset')
 
 #' Nonmetric multidimensional scaling for AFLP data
 #'
@@ -79,9 +79,9 @@ loci.subset <- function(x, type) UseMethod('loci.subset')
 #' @details The \code{link[cluster]{daisy}} function is used to calculate distances because it can accomodate missing values.
 #' @examples
 #' # run BayeScan using low number of iterations
-#' dat <- read.BayeScanData('int/Data_Meirmans_et_al_IntrabioDiv/Androsace_obtusifolia_AFLP.dat')
-#' x <- run.BayeScan(x, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
-#' z <- mds(x, metric='gower' k=2)
+#' dat <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
+#' x <- run.BayeScan(dat, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
+#' z <- mds(x, metric='gower', k=2)
 #' @export
 mds <- function(x, metric, type, ...) UseMethod('mds')
 

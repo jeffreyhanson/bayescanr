@@ -1,3 +1,6 @@
+#' @importFrom methods setClass
+#' @importFrom methods show
+
 #' @importFrom data.table fread
 
 #' @importFrom parallel detectCores

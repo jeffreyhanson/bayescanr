@@ -5,10 +5,10 @@ NULL
 #'
 #' This class stores results from the BayeScan program.
 #'
-#' @slot fst \code{data.frame}
-#' @slot mcmc \code{data.frame}
-#' @slot acceptance.rate \code{data.frame}
-#' @slot verification \code{data.frame}
+#' @slot fst \code{data.frame} object containing output results ('filename_fst.txt').
+#' @slot mcmc \code{data.frame} object containing Markov chain Monte Carlo information ('filename.sel').
+#' @slot acceptance.rate \code{data.frame} object with information on the evolution of the acceptance rate ('filename_AccRte.txt').
+#' @slot verification \code{character} object with verification diagnostics ('file_Verif.txt').
 #' @seealso \code{\link{BayeScanResults}}.
 #' @export
 setClass(
@@ -46,6 +46,10 @@ setClass(
 #'
 #' This function creates a new \code{BayeScanResults} object.
 #'
+#' @param fst \code{data.frame} object containing output results ('filename_fst.txt').
+#' @param mcmc \code{data.frame} object containing Markov chain Monte Carlo information ('filename.sel').
+#' @param acceptance.rate \code{data.frame} object with information on the evolution of the acceptance rate ('filename_AccRte.txt').
+#' @param verification \code{character} object with verification diagnostics ('file_Verif.txt').
 #' @seealso \code{\link{BayeScanResults-class}}.
 #' @return \code{\link{BayeScanResults}}.
 #' @export
@@ -90,7 +94,7 @@ pop.names.BayeScanResults <- function(x) {
 #' @export
 sample.pops.BayeScanResults <- function(x) {
 	stop('BayeScanResults does not store population names.')
-	return(invisivle())
+	return(invisible())
 }
 
 
@@ -105,7 +109,10 @@ sample.pops.BayeScanResults <- function(x) {
 #' @return \code{\link{BayeScanResults}}.
 #' @export
 read.BayeScanResults<-function(file, dir, threshold=0.95) {
-return(
+	# avoid cran note
+	prob <- NULL
+	# return object
+	return(
 		BayeScanResults(
 			fst=base::transform(
 				`names<-`(

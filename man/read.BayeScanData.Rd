@@ -16,7 +16,7 @@ read.BayeScanData(x)
 This function reads FSTAT data for BayeScan.
 }
 \examples{
-x <- read.BayeScanData(system.file('ext', 'example_fstat_aflp.dat'))
+x <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 }
 \seealso{
 \code{BayeScanData}.

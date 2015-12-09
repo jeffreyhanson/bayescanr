@@ -109,7 +109,7 @@ loci.subset.BayeScanAnalysis <- function(x, loci) {
 #' @examples
 #' # run BayeScan using low number of iterations
 #' dat <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
-#' x <- run.BayeScan(x, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
+#' x <- run.BayeScan(dat, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
 #' @export
 run.BayeScan<-function(x, threads=1, n=5000, thin=10, nbp=20, pilot=5000, burn=50000, threshold=0.95, dir=tempdir(), clean=TRUE) {
 	## initialization
@@ -158,7 +158,7 @@ run.BayeScan<-function(x, threads=1, n=5000, thin=10, nbp=20, pilot=5000, burn=5
 #' @method mds BayeScanAnalysis
 #' @rdname mds
 #' @export
-mds.BayeScanAnalysis <- function(x, metric, type, ...) {
+mds.BayeScanAnalysis <- function(x, metric='gower', type='all', ...) {
 	return(
 		mds.BayeScanData(
 			loci.subset(x, type),

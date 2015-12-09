@@ -125,7 +125,7 @@ loci.subset.BayeScanData <- function(x, loci) {
 #' @seealso \code{BayeScanData}.
 #' @return \code{BayeScanData}.
 #' @examples
-#' x <- read.BayeScanData(system.file('ext', 'example_fstat_aflp.dat'))
+#' x <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 #' @export
 read.BayeScanData <- function(x) {
 	# read first line
@@ -157,7 +157,7 @@ read.BayeScanData <- function(x) {
 #' @seealso \code{BayeScanData}.
 #' @details This code is based on the R code distributed with BayeScan (version 2.1) for converting binary FSTAT files to the BayeScan data format.
 #' @examples
-#' x <- read.BayeScanData('int/Data_Meirmans_et_al_IntrabioDiv/Androsace_obtusifolia_AFLP.dat')
+#' x <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 #' write.BayeScanData(x, tempfile(fileext='txt'))
 #' @export
 write.BayeScanData <- function(x,file) {
@@ -192,7 +192,6 @@ write.BayeScanData <- function(x,file) {
 #' @export
 mds.BayeScanData <- function(x, metric='gower', type='all', ...) {
 	# init
-	b <<- x
 	if (type!='all')
 		stop('argument to type must be all when x inherits from BayeScanData')
 	# main
@@ -219,6 +218,7 @@ print.BayeScanData=function(x, ..., header=TRUE) {
 }
 
 #' @rdname show
+#' @method show BayeScanData
 #' @export
 setMethod(
 	'show',

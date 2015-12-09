@@ -6,7 +6,7 @@
 \alias{loci.subset.BayeScanData}
 \title{Subset loci}
 \usage{
-loci.subset(x, type)
+loci.subset(x, loci)
 
 \method{loci.subset}{BayeScanData}(x, loci)
 
@@ -15,7 +15,7 @@ loci.subset(x, type)
 \arguments{
 \item{x}{\code{BayeScanData}, or \code{BayeScan}.}
 
-\item{type}{\code{numeric} index of loci to subset. If \code{x} is a \code{BayeScan} object, then a \code{character} denoting the type of loci to subset. Valid arguments are 'adaptive', or 'neutral'.}
+\item{loci}{\code{numeric} index of loci to subset. If \code{x} is a \code{BayeScan} object, then a \code{character} denoting the type of loci to subset. Valid arguments are 'adaptive', or 'neutral'.}
 }
 \value{
 \code{BayeScanData}.

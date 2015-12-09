@@ -10,7 +10,7 @@ Authors@R: c(person(c("Jeffrey", "O"), "Hanson", email='jeffrey.hanson@uqconnect
 Description: Detect natural selection from population-based genetic data.
     Currently, only binary AFLP data is supported.
 Imports:
-    utils,
+    methods,
     data.table,
     cluster,
     vegan,
@@ -23,7 +23,12 @@ VignetteBuilder: knitr
 SystemRequirements: C++11
 Suggests:
     knitr,
-    testthat
+    rmarkdown
+BinaryFiles:
+    'BayeScan2.1_linux32bits',
+    'BayeScan2.1_linux64bits',
+    'BayeScan2.1_macos64bits',
+    'BayeScan2.1_win32bits_cmd_line.exe'
 Collate:
     'dependencies.R'
     'bayescanr-internal.R'
