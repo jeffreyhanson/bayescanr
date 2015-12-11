@@ -20,7 +20,7 @@ documentclass: article
 bibliography: Endnote_lib.bib
 csl: reference-style.csl
 vignette: >
-  %\VignetteIndexEntry{rapr}
+  %\VignetteIndexEntry{bayescanr}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
