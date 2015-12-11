@@ -6,9 +6,13 @@
 \alias{sample.pops.BayeScanData}
 \alias{sample.pops.BayeScanReplicate}
 \alias{sample.pops.BayeScanResults}
+\alias{sample.pops<-}
+\alias{sample.pops<-.BayeScanData}
 \title{Name of sample populations}
 \usage{
 sample.pops(x)
+
+sample.pops(x) <- value
 
 \method{sample.pops}{BayeScanReplicate}(x)
 
@@ -16,10 +20,14 @@ sample.pops(x)
 
 \method{sample.pops}{BayeScanData}(x)
 
+\method{sample.pops}{BayeScanData}(x) <- value
+
 \method{sample.pops}{BayeScanAnalysis}(x)
 }
 \arguments{
 \item{x}{\code{BayeScanData}, \code{BayeScan}.}
+
+\item{value}{\code{character} new population names.}
 }
 \value{
 \code{character}.

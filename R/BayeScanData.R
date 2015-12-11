@@ -85,6 +85,14 @@ sample.pops.BayeScanData <- function(x) {
 	return(x@populations)
 }
 
+#' @rdname sample.pops
+#' @method sample.pops<- BayeScanData
+#' @export
+`sample.pops<-.BayeScanData` <- function(x, value) {
+	x@populations <- value
+	return(x)
+}
+
 #' @rdname pop.subset
 #' @method pop.subset BayeScanData
 #' @export

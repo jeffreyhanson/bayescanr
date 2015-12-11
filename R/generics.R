@@ -42,9 +42,15 @@ pop.names <- function(x) UseMethod('pop.names')
 #' This function returns the population name that each sample belongs to in a \code{BayeScan} object.
 #' 
 #' @param x \code{BayeScanData}, \code{BayeScan}.
+#' @param value \code{character} new population names.
 #' @return \code{character}.
 #' @export
 sample.pops <- function(x) UseMethod('sample.pops')
+
+#' @rdname sample.pops
+#' @export
+`sample.pops<-` <- function(x, value) UseMethod('sample.pops')
+
 
 #' Subset populations
 #'
