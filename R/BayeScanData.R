@@ -146,6 +146,21 @@ loci.subset.BayeScanData <- function(x, loci) {
 	}
 }
 
+#' @rdname samples.subset
+#' @method samples.subset BayeScanData
+#' @export
+samples.subset.BayeScanData <- function(x, samples) {
+	if (is.character(samples))
+		sample <- match(samples, x@labels)
+	return(
+		BayeScanData(
+			matrix=x@matrix[samples,,drop=FALSE],
+			populations=x@populations[samples],
+			primers=x@primers
+		)
+	)
+}
+
 
 #' Read FSTAT data for BayeScan
 #'

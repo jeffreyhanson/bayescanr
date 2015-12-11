@@ -86,6 +86,16 @@ pop.subset <- function(x, populations) UseMethod('pop.subset')
 #' @export
 loci.subset <- function(x, loci) UseMethod('loci.subset')
 
+#' Subset samples
+#'
+#' This function returns a subset of the samples in a \code{BayeScan} object.
+#' 
+#' @param x \code{BayeScanData}, or \code{BayeScan}.
+#' @param samples \code{numeric} index of samples to subset.
+#' @return \code{BayeScanData}.
+#' @export
+samples.subset <- function(x, samples) UseMethod('samples.subset')
+
 #' Nonmetric multidimensional scaling for AFLP data
 #'
 #' This function performs nonmetric multidimensional scaling analysis on the loci in a \code{BayeScan} object.
