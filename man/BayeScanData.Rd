@@ -4,7 +4,7 @@
 \alias{BayeScanData}
 \title{Create BayeScanData object}
 \usage{
-BayeScanData(matrix, primers, populations)
+BayeScanData(matrix, primers, populations, labels)
 }
 \arguments{
 \item{matrix}{\code{matrix} with binary loci data. Each row is for a different sample; each column is for a different loci.}
@@ -12,6 +12,8 @@ BayeScanData(matrix, primers, populations)
 \item{primers}{\code{character} names of the selective primers used for the AFLPs followed by the location on the gel.}
 
 \item{populations}{\code{character} name of populations that each sample is from.}
+
+\item{labels}{\code{character} labels for each sample.}
 }
 \description{
 This function creates a new \code{BayeScanData} object.

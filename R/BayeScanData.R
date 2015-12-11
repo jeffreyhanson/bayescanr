@@ -8,6 +8,7 @@ NULL
 #' @slot matrix \code{matrix} with binary loci data. Each row is for a different sample; each column is for a different loci.
 #' @slot primers \code{character} names of the selective primers used for the AFLPs followed by the location on the gel.
 #' @slot populations \code{character} name of populations that each sample is from.
+#' @slot labels \code{character} labels for each sample.
 #' @seealso \code{\link{BayeScanData}}.
 #' @export
 setClass(
@@ -15,7 +16,8 @@ setClass(
 	representation(
 		matrix='matrix',
 		primers='character',
-		populations='character'
+		populations='character',
+		labels='character'
 	),
 	validity=function(object) {
 		# matrix
@@ -26,11 +28,15 @@ setClass(
 		expect_is(object@primers,'character')
 		expect_true(all(!is.na(object@primers)))
 		# populations
-		expect_is(object@primers,'character')
+		expect_is(object@populations,'character')
 		expect_true(all(!is.na(object@populations)))
+		# labels
+		expect_is(object@labels,'character')
+		expect_true(all(!is.na(object@labels)))
 		# cross-object checks
 		expect_equal(length(object@primers),ncol(object@matrix))
 		expect_equal(length(object@populations),nrow(object@matrix))
+		expect_equal(length(object@labels),nrow(object@matrix))
 		return(TRUE)
 	}
 )
@@ -42,10 +48,11 @@ setClass(
 #' @param matrix \code{matrix} with binary loci data. Each row is for a different sample; each column is for a different loci.
 #' @param primers \code{character} names of the selective primers used for the AFLPs followed by the location on the gel.
 #' @param populations \code{character} name of populations that each sample is from.
+#' @param labels \code{character} labels for each sample.
 #' @seealso \code{\link{BayeScanData-class}}.
 #' @export
-BayeScanData<-function(matrix, primers, populations) {
-	x<-new("BayeScanData", matrix=matrix, primers=primers, populations=populations)
+BayeScanData<-function(matrix, primers, populations, labels) {
+	x<-new("BayeScanData", matrix=matrix, primers=primers, populations=populations, labels=labels)
 	validObject(x, test=FALSE)
 	return(x)
 }
@@ -90,6 +97,21 @@ sample.pops.BayeScanData <- function(x) {
 #' @export
 `sample.pops<-.BayeScanData` <- function(x, value) {
 	x@populations <- value
+	return(x)
+}
+
+#' @rdname sample.labels
+#' @method sample.labels BayeScanData
+#' @export
+sample.labels.BayeScanData <- function(x) {
+	return(x@labels)
+}
+
+#' @rdname sample.labels
+#' @method sample.labels<- BayeScanData
+#' @export
+`sample.labels<-.BayeScanData` <- function(x, value) {
+	x@labels <- value
 	return(x)
 }
 
@@ -152,7 +174,7 @@ read.BayeScanData <- function(x) {
 	mat[which(mat[]==2)] <- 1
 	# return object
 	return(
-		BayeScanData(matrix=mat, primers=primers, populations=as.character(dat[[1]]))
+		BayeScanData(matrix=mat, primers=primers, populations=as.character(dat[[1]]), labels=as.character(seq_len(nrow(mat))))
 	)
 }
 

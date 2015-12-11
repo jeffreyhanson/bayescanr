@@ -51,6 +51,20 @@ sample.pops <- function(x) UseMethod('sample.pops')
 #' @export
 `sample.pops<-` <- function(x, value) UseMethod('sample.pops')
 
+#' Sample labels
+#'
+#' This function returns the labels for each sample in a \code{BayeScan} object.
+#' 
+#' @param x \code{BayeScanData}, \code{BayeScan}.
+#' @param value \code{character} new labels.
+#' @return \code{character}.
+#' @export
+sample.labels <- function(x) UseMethod('sample.labels')
+
+#' @rdname sample.pops
+#' @export
+`sample.labels<-` <- function(x, value) UseMethod('sample.labels')
+
 
 #' Subset populations
 #'

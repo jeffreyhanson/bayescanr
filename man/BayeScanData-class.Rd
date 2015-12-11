@@ -15,6 +15,8 @@ This class stores input data for the BayeScan program.
 \item{\code{primers}}{\code{character} names of the selective primers used for the AFLPs followed by the location on the gel.}
 
 \item{\code{populations}}{\code{character} name of populations that each sample is from.}
+
+\item{\code{labels}}{\code{character} labels for each sample.}
 }}
 \seealso{
 \code{\link{BayeScanData}}.
