@@ -159,7 +159,7 @@ sample.subset.BayeScanData <- function(x, samples) {
 			matrix=x@matrix[samples,,drop=FALSE],
 			populations=x@populations[samples],
 			primers=x@primers,
-			labels=labels[samples]
+			labels=x@labels[samples]
 		)
 	)
 }
