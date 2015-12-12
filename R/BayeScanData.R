@@ -255,7 +255,7 @@ mds.BayeScanData <- function(x, metric='gower', type='all', ...) {
 #' @method print BayeScanData
 #' @rdname print
 #' @export
-print.BayeScanData=function(x, ..., header=TRUE) {
+print.BayeScanData <- function(x, ..., header=TRUE) {
 	if (header)
 		cat("BayeScanData object.\n")
 	cat('  populations:',nrow(x@matrix),'\n')
@@ -271,4 +271,3 @@ setMethod(
 	function(object)
 		print.BayeScanData(object)
 )
-

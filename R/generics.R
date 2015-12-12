@@ -115,7 +115,6 @@ samples.subset <- function(x, samples) UseMethod('samples.subset')
 #' @export
 mds <- function(x, metric, type, ...) UseMethod('mds')
 
-
 #' Print objects
 #'
 #' This function prints objects.
