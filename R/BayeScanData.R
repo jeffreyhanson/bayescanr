@@ -124,7 +124,8 @@ pop.subset.BayeScanData <- function(x, populations) {
 		BayeScanData(
 			matrix=x@matrix[pos,,drop=FALSE],
 			populations=x@populations[pos],
-			primers=x@primers
+			primers=x@primers,
+			labels=x@labels[pos]
 		)
 	)
 }
@@ -140,7 +141,8 @@ loci.subset.BayeScanData <- function(x, loci) {
 			BayeScanData(
 				matrix=x@matrix[,loci,drop=FALSE],
 				populations=x@populations,
-				primers=x@primers[loci]
+				primers=x@primers[loci],
+				labels=x@labels
 			)
 		)
 	}
@@ -151,12 +153,13 @@ loci.subset.BayeScanData <- function(x, loci) {
 #' @export
 sample.subset.BayeScanData <- function(x, samples) {
 	if (is.character(samples))
-		sample <- match(samples, x@labels)
+		samples <- match(samples, x@labels)
 	return(
 		BayeScanData(
 			matrix=x@matrix[samples,,drop=FALSE],
 			populations=x@populations[samples],
-			primers=x@primers
+			primers=x@primers,
+			labels=labels[samples]
 		)
 	)
 }

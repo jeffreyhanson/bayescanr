@@ -8,7 +8,8 @@ test_that('BayeScanData', {
 	x <- BayeScanData(
 		matrix=matrix,
 		primers=primers,
-		populations=populations
+		populations=populations,
+		labels=as.character(seq_len(nrow(matrix)))
 	)
 	# test methods
 	expect_equal(n.pop(x), nrow(x@matrix))
