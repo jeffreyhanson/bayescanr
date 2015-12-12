@@ -94,7 +94,7 @@ loci.subset <- function(x, loci) UseMethod('loci.subset')
 #' @param samples \code{numeric} index of samples to subset.
 #' @return \code{BayeScanData}.
 #' @export
-samples.subset <- function(x, samples) UseMethod('samples.subset')
+sample.subset <- function(x, samples) UseMethod('sample.subset')
 
 #' Nonmetric multidimensional scaling for AFLP data
 #'

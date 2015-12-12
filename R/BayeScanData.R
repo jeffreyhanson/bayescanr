@@ -146,10 +146,10 @@ loci.subset.BayeScanData <- function(x, loci) {
 	}
 }
 
-#' @rdname samples.subset
-#' @method samples.subset BayeScanData
+#' @rdname sample.subset
+#' @method sample.subset BayeScanData
 #' @export
-samples.subset.BayeScanData <- function(x, samples) {
+sample.subset.BayeScanData <- function(x, samples) {
 	if (is.character(samples))
 		sample <- match(samples, x@labels)
 	return(
