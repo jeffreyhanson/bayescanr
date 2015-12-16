@@ -110,6 +110,7 @@ sample.pops.BayeScanReplicate <- function(x) {
 read.BayeScanReplicate<-function(file, dir, fdr=0.95) {
 	# avoid cran note
 	prob <- NULL
+	qval <- NULL
 	# return object
 	return(
 		BayeScanReplicate(
