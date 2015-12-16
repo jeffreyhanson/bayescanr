@@ -116,15 +116,9 @@ run.BayeScan<-function(x, threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000
 	opts <- BayeScanOpts(threads=threads, reps=reps, n=n, thin=thin, nbp=nbp, pilot=pilot, burn=burn, fdr=fdr)
 	expect_is(x, 'BayeScanData')
 	# set BayeScan file path
-	bayescan.path <- switch(
-		Sys.info()['sysname'],
-		'Linux'=system.file('bin', 'BayeScan2.1_linux64bits', package='bayescanr'),
-		'Darwin'=system.file('bin', 'bayescan_2.1_macos64bits', package='bayescanr'),
-		'Windows'=system.file('bin', 'bayescan_2.1_win32bits_cmd_line.exe', package='bayescanr'),
-	)
+	bayescan.path <- system.file('bin', 'bayescan_2.1', package='bayescanr')
 	# update permissions
-	if (!grepl(basename(bayescan.path), 'win'))
-		system(paste0('chmod 700 ',bayescan.path))
+	if (Sys.info()[['sysname']]!='Windows') system(paste0('chmod 777 ',bayescan.path))
 	### main processing
 	# write data to file
 	dat.path <- tempfile(tmpdir=dir, fileext='.txt')
