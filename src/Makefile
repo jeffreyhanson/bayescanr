@@ -1,7 +1,15 @@
-# BayeScan makefile
+### BayeScan makefile
 
+# set variables
+CXX = g++
+
+UNAME := $(shell uname -s)
+ifeq($(UNAME), Darwin)
+	CXX = g++-4.8 
+
+# build commands
 bayescan_2.1: start.o beta.o dirichlet.o RJupdates.o MHupdates.o likelihood.o read_write.o anyoption.o 
-	g++ -fopenmp -static -lpthread -o bayescan_2.1 start.o beta.o dirichlet.o RJupdates.o MHupdates.o likelihood.o read_write.o anyoption.o 
+	CXX -fopenmp -static -lpthread -o bayescan_2.1 start.o beta.o dirichlet.o RJupdates.o MHupdates.o likelihood.o read_write.o anyoption.o 
 	cp bayescan_2.1 ../inst/bin/bayescan_2.1
 
 start.o: start.cpp errors.cpp anyoption.h global_defs.h
