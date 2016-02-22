@@ -235,24 +235,39 @@ write.BayeScanData <- function(x,file) {
 	return(invisible())
 }
 
-#' @method mds BayeScanData
-#' @rdname mds
+#' @method nmds BayeScanData
+#' @rdname nmds
 #' @export
-mds.BayeScanData <- function(x, metric='gower', type='all', ...) {
+nmds.BayeScanData <- function(x, max.stress=0.1, min.k=2, max.k=Inf, metric='gower', type='all', ...) {
 	# init
+	stopifnot(min.k<=max.k)
 	if (type!='all')
 		stop('argument to type must be all when x inherits from BayeScanData')
+	# prelim
+	dist.mtx <- daisy(
+		cbind(as.data.frame(x@matrix==1),1),
+		metric=metric,
+		type=list(asymm=seq_len(n.loci(x)))
+	)
 	# main
-	return(
-		metaMDS(
-			comm=daisy(
-				cbind(as.data.frame(x@matrix==1),1),
-				metric=metric,
-				type=list(asymm=seq_len(n.loci(x)))
-			),
+	curr.stress <- Inf
+	curr.k <- min.k
+	# find nmds with suitable k
+	while (curr.stress > max.stress & curr.k <= max.k) {
+		print('here')
+		curr.nmds <- metaMDS(
+			comm=dist.mtx,
+			k=curr.k,
+			wascores=FALSE,
+			autotransform=FALSE,
+			noshare=FALSE,
 			...
 		)
-	)
+		curr.stress <- curr.nmds$stress
+		curr.k <- curr.k + 1
+	}
+	# reutrn object
+	return(curr.nmds)
 }
 
 #' @method print BayeScanData

@@ -98,9 +98,12 @@ sample.subset <- function(x, samples) UseMethod('sample.subset')
 
 #' Nonmetric multidimensional scaling for AFLP data
 #'
-#' This function performs nonmetric multidimensional scaling analysis on the loci in a \code{BayeScan} object.
+#' This function performs successive nonmetric multidimensional scaling analyses on the loci in a \code{BayeScan} object until an adequate stress level is acheived.
 #'
 #' @param x \code{BayeScanData} object.
+#' @param max.stress \code{numeric} maximum allowed stress. Defaults to 0.1.
+#' @param min.k \code{numeric} minimum number of dimensions to investigate. Defaults to 2.
+#' @param max.k \code{numeric} maximum number of dimensions to investigate. Defaults to \code{Infinity}.
 #' @param metric \code{character} name of distance metric to use. Valid arguments are 'euclidean', 'manhattan', or 'gower'. Defaults to 'gower'.
 #' @param type \code{character} type of loci to analyse. Valid arguments are 'all', 'adaptive', or 'neutral'. Defaults to 'all'.
 #' @param ... arguments passed to \code{link[vegan]{metaMDS}}.
@@ -111,9 +114,10 @@ sample.subset <- function(x, samples) UseMethod('sample.subset')
 #' # run BayeScan using low number of iterations
 #' dat <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
 #' x <- run.BayeScan(dat, threads=1, n=50, thin=1, nbp=10, pilot=10, burn=10)
-#' z <- mds(x, metric='gower', k=2)
+#' # generate nmds using minimal iterations and only investigating a few k values
+#' z <- nmds(x, metric='gower', min.k=2, max.k=5, trymax=5)
 #' @export
-mds <- function(x, metric, type, ...) UseMethod('mds')
+nmds <- function(x, max.stress, min.k, max.k, metric, type, ...) UseMethod('nmds')
 
 #' Print objects
 #'

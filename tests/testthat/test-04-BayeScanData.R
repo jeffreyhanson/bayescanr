@@ -50,10 +50,10 @@ test_that('loci.subset.BayeScanData', {
 	expect_equal(length(bsd2@primers), 10)
 })
 
-test_that('mds.BayeScanData', {
+test_that('nmds.BayeScanData', {
 	# load data
 	bsd <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
-	# mds
-	x<-mds(bsd)
+	# nmds
+	x<-nmds(bsd, trymax=2, max.stress=0.2)
 })
 

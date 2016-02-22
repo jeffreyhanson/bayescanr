@@ -151,14 +151,18 @@ run.BayeScan<-function(x, threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000
 	)
 }
 
-#' @method mds BayeScanAnalysis
-#' @rdname mds
+#' @method nmds BayeScanAnalysis
+#' @rdname nmds
 #' @export
-mds.BayeScanAnalysis <- function(x, metric='gower', type='all', ...) {
+nmds.BayeScanAnalysis <- function(x, max.stress=0.1, min.k=2, max.k=Inf, metric='gower', type='all', ...) {
 	return(
-		mds.BayeScanData(
+		nmds.BayeScanData(
 			loci.subset(x, type),
-			metric,
+			max.stress=max.stress,
+			min.k=min.k,
+			max.k=max.k,
+			metric=metric,
+			type='all',
 			...
 		)
 	)

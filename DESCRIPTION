@@ -24,7 +24,9 @@ SystemRequirements: C++11
 Suggests:
     knitr,
     rmarkdown
-BinaryFiles: 'bayescan_2.1'
+BinaryFiles: 
+    'inst/bin/bayescan_2.1',
+    'inst/bin/bayescan_2.1.exe'
 Collate:
     'dependencies.R'
     'bayescanr-internal.R'
