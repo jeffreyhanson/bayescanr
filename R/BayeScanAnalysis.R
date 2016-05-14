@@ -120,11 +120,12 @@ run.BayeScan<-function(x, threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000
 	# update permissions
 	if (Sys.info()[['sysname']]!='Windows') system(paste0('chmod 777 ',bayescan.path))
 	### main processing
-	# write data to file
-	dat.path <- tempfile(tmpdir=dir, fileext='.txt')
-	write.BayeScanData(x, dat.path)
 	# run BayesScan analysis
 	replicates <- lapply(seq_len(opts@reps), function(i) {
+		# write data to file
+		dat.path <- tempfile(tmpdir=dir, fileext=paste0('_run_',i,'.txt'))
+		write.BayeScanData(x, dat.path)
+		# run BayeScan
 		system(
 			paste0(
 				bayescan.path, ' ',
@@ -138,6 +139,7 @@ run.BayeScan<-function(x, threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000
 				' -burn ',opts@burn
 			)
 		)
+		# load results and return them
 		return(read.BayeScanReplicate(dat.path,dir,fdr=opts@fdr))
 	})
 	## exports
