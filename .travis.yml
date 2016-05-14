@@ -14,7 +14,7 @@ env:
 before_install: 
   - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then sudo tlmgr install amsmath amsfonts float makecell tocloft titlesec framed titling; fi;
+  - sudo tlmgr install amsmath amsfonts float makecell tocloft titlesec framed titling
   
 r_packages:
   - covr
