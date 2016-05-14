@@ -1,3 +1,5 @@
+context('BayeScanResults')
+
 test_that('read.BayeScanResults', {
 	# create data
 	dir<-tempdir()

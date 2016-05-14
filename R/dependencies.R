@@ -7,6 +7,18 @@
 
 #' @importFrom cluster daisy
 
+#' @importFrom coda mcmc
+#' @importFrom coda mcmc.list
+#' @importFrom coda gelman.diag
+
+#' @importFrom tidyr gather
+
+#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 xlab
+#' @importFrom ggplot2 ylab
+#' @importFrom ggplot2 geom_line
+
 #' @importFrom vegan metaMDS
 
 #' @importFrom testthat test_that

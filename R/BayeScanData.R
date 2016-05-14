@@ -254,7 +254,6 @@ nmds.BayeScanData <- function(x, max.stress=0.1, min.k=2, max.k=Inf, metric='gow
 	curr.k <- min.k
 	# find nmds with suitable k
 	while (curr.stress > max.stress & curr.k <= max.k) {
-		print('here')
 		curr.nmds <- metaMDS(
 			comm=dist.mtx,
 			k=curr.k,

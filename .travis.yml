@@ -16,12 +16,6 @@ before_install:
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then sudo tlmgr install amsmath amsfonts float makecell tocloft titlesec framed titling; fi;
   
-r_binary_packages:
-  - data.table
-  - cluster
-  - vegan
-  - testthat
-
 r_packages:
   - covr
   - rmarkdown

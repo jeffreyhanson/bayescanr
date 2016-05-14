@@ -129,6 +129,29 @@ nmds <- function(x, max.stress, min.k, max.k, metric, type, ...) UseMethod('nmds
 #' @name print
 NULL
 
+#' Traceplot
+#'
+#' This function makes a traceplot showing convergence for multiple BayeScan runs.
+#' @param x \code{BayeScanAnalysis} or \code{BayeScanResults} object.
+#' @param ... not used.
+#' @name traceplot
+traceplot <- function(x, ...) UseMethod('traceplot')
+
+#' Gelman-Rubin diagnostic statistics
+#'
+#' This function returns the Gelman-Rubin diagnostic statistics for the negative loglikelihood of multiple BayeScan runs. See \code{\link[code]{gelman.dig}} for more information.
+#' @param x \code{BayeScanAnalysis} or \code{BayeScanResults} object.
+#' @param ... arguments passed to \code{\link[code]{gelman.dig}}.
+#' @name gelman.diag
+gelman.diag <- function(x, ...) UseMethod('gelman.diag')
+
+#' @method gelman.diag default
+#' @rdname gelman.diag
+#' @export
+gelman.diag.default <- function(x, ...) {
+	coda::gelman.diag(x, ...)
+}
+
 #' Show objects
 #'
 #' This function shows objects.

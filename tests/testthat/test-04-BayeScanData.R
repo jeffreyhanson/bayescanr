@@ -1,3 +1,5 @@
+context('BayeScanData')
+
 test_that('BayeScanData', {
 	# simualate data
 	primers <- letters[1:5]

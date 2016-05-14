@@ -105,6 +105,39 @@ print.BayeScanResults=function(x, ..., header=TRUE) {
 		cat("BayeScanResults object.\n")
 	cat('  adaptive loci:',sum(x@summary$type=='adaptive'),'\n')
 	cat('  neutral loci:',sum(x@summary$type=='neutral'),'\n')
+	cat('  Gelman-Ruben R:', gelman.diag(x)$psrf[[1]], '\n')
+}
+
+#' @method traceplot BayeScanResults
+#' @rdname traceplot
+#' @export
+traceplot.BayeScanResults <- function(x, ...) {
+	# extract logliks
+	ll <- data.frame(iteration=x@replicates[[1]]@mcmc$iteration)
+	ll <- cbind(ll, data.frame(sapply(x@replicates, function(y) {y@mcmc$logL})))
+	ll <- gather(ll, chain, loglik, -iteration)
+	ll$chain <- gsub('X', '', ll$chain, fixed=TRUE)
+	# make plot
+	ggplot(data=ll, aes(x=iteration, y=loglik, color=chain)) +
+		geom_line() + xlab('Iteration') + ylab('Negative loglikelihood')
+}
+
+#' @method gelman.diag BayeScanResults
+#' @rdname gelman.diag
+#' @export
+gelman.diag.BayeScanResults <- function(x, ...) {
+	if(length(x@replicates)>1)
+		return(
+			coda::gelman.diag(
+				do.call(
+					mcmc.list,
+					lapply(x@replicates, function(y) {mcmc(y@mcmc$logL, thin=diff(y@mcmc$iteration[2:1]))})
+				)
+			)
+		)
+	# return gelman.diag object with NAs if only one chain
+	return(structure(list(psrf = structure(c(NA_real_, NA_real_), .Dim = 1:2, .Dimnames = list(NULL, c("Point est.", "Upper C.I."))),
+		mpsrf = NULL), .Names = c("psrf", "mpsrf"), class = "gelman.diag"))
 }
 
 #' @rdname show

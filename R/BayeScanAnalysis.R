@@ -184,6 +184,20 @@ print.BayeScanAnalysis=function(x, ..., header=TRUE) {
 	print(x@results, header=FALSE)
 }
 
+#' @method traceplot BayeScanResults
+#' @rdname traceplot
+#' @export
+traceplot.BayeScanAnalysis <- function(x, ...) {
+	traceplot.BayeScanResults(x@results, ...)
+}
+
+#' @method gelman.diag BayeScanAnalysis
+#' @rdname gelman.diag
+#' @export
+gelman.diag.BayeScanAnalysis <- function(x, ...) {
+	gelman.diag.BayeScanResults(x@results, ...)
+}
+
 #' @rdname show
 #' @export
 setMethod(

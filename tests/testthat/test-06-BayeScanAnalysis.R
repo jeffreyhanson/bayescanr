@@ -1,3 +1,5 @@
+context('BayeScanAnalysis')
+
 test_that('run.BayeScan', {
 	# make BayeScan object
 	bd <- read.BayeScanData(system.file('extdata', 'example_fstat_aflp.dat', package='bayescanr'))
@@ -8,6 +10,7 @@ test_that('run.BayeScan', {
 	bs
 	n.loci(bs)
 	n.pop(bs)
-
+	gelman.diag(bs)
+	traceplot(bs)
 })
 
