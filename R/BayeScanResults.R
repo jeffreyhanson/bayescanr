@@ -124,7 +124,7 @@ traceplot.BayeScanResults <- function(x, ...) {
 	# make plot
 	ggplot(data=ll, aes(x=iteration, y=loglik, color=chain)) +
 		geom_line() + xlab('Iteration') + ylab('Negative loglikelihood') +
-		theme_classic() + theme(axis.line.x=element_blank(), axis.line.y=element_line())
+		theme_classic() + theme(axis.line.x=element_line(), axis.line.y=element_line())
 }
 
 #' @method gelman.diag BayeScanResults
