@@ -139,9 +139,9 @@ traceplot <- function(x, ...) UseMethod('traceplot')
 
 #' Gelman-Rubin diagnostic statistics
 #'
-#' This function returns the Gelman-Rubin diagnostic statistics for the negative loglikelihood of multiple BayeScan runs. See \code{\link[code]{gelman.dig}} for more information.
+#' This function returns the Gelman-Rubin diagnostic statistics for the negative loglikelihood of multiple BayeScan runs. See \code{\link[coda]{gelman.diag}} for more information.
 #' @param x \code{BayeScanAnalysis} or \code{BayeScanResults} object.
-#' @param ... arguments passed to \code{\link[code]{gelman.dig}}.
+#' @param ... arguments passed to \code{\link[coda]{gelman.diag}}.
 #' @name gelman.diag
 gelman.diag <- function(x, ...) UseMethod('gelman.diag')
 

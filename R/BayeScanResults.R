@@ -112,6 +112,10 @@ print.BayeScanResults=function(x, ..., header=TRUE) {
 #' @rdname traceplot
 #' @export
 traceplot.BayeScanResults <- function(x, ...) {
+	# remove cran notes
+	chain <- NULL
+	loglik <- NULL
+	iteration <- NULL
 	# extract logliks
 	ll <- data.frame(iteration=x@replicates[[1]]@mcmc$iteration)
 	ll <- cbind(ll, data.frame(sapply(x@replicates, function(y) {y@mcmc$logL})))
@@ -119,7 +123,8 @@ traceplot.BayeScanResults <- function(x, ...) {
 	ll$chain <- gsub('X', '', ll$chain, fixed=TRUE)
 	# make plot
 	ggplot(data=ll, aes(x=iteration, y=loglik, color=chain)) +
-		geom_line() + xlab('Iteration') + ylab('Negative loglikelihood')
+		geom_line() + xlab('Iteration') + ylab('Negative loglikelihood') +
+		theme_classic() + theme(axis.line.x=element_blank(), axis.line.y=element_line())
 }
 
 #' @method gelman.diag BayeScanResults

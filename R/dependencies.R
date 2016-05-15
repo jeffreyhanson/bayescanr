@@ -1,5 +1,7 @@
 #' @importFrom methods setClass
-#' @importFrom methods show
+#' @importFrom methods show	
+#' @importFrom methods new
+#' @importFrom methods validObject
 
 #' @importFrom data.table fread
 
@@ -18,6 +20,9 @@
 #' @importFrom ggplot2 xlab
 #' @importFrom ggplot2 ylab
 #' @importFrom ggplot2 geom_line
+#' @importFrom ggplot2 theme_classic
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_line
 
 #' @importFrom vegan metaMDS
 

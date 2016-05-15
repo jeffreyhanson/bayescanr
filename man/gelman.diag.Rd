@@ -18,9 +18,9 @@ gelman.diag(x, ...)
 \arguments{
 \item{x}{\code{BayeScanAnalysis} or \code{BayeScanResults} object.}
 
-\item{...}{arguments passed to \code{\link[code]{gelman.dig}}.}
+\item{...}{arguments passed to \code{\link[coda]{gelman.diag}}.}
 }
 \description{
-This function returns the Gelman-Rubin diagnostic statistics for the negative loglikelihood of multiple BayeScan runs. See \code{\link[code]{gelman.dig}} for more information.
+This function returns the Gelman-Rubin diagnostic statistics for the negative loglikelihood of multiple BayeScan runs. See \code{\link[coda]{gelman.diag}} for more information.
 }
 
