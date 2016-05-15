@@ -136,8 +136,9 @@ gelman.diag.BayeScanResults <- function(x, ...) {
 			coda::gelman.diag(
 				do.call(
 					mcmc.list,
-					lapply(x@replicates, function(y) {mcmc(y@mcmc$logL, thin=diff(y@mcmc$iteration[2:1]))})
-				)
+					lapply(x@replicates, function(y) {mcmc(y@mcmc$logL, start=1, thin=diff(y@mcmc$iteration[2:1]))})
+				),
+				autoburnin=FALSE
 			)
 		)
 	# return gelman.diag object with NAs if only one chain
