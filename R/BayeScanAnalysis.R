@@ -128,7 +128,7 @@ run.BayeScan<-function(x, threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000
 		# run BayeScan
 		system(
 			paste0(
-				bayescan.path, ' ',
+				'"', bayescan.path, '" ',
 				dat.path,
 				' -od ',dir,
 				' -threads ',opts@threads,
