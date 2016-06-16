@@ -67,7 +67,7 @@ setClass(
 #' @seealso \code{\link{BayeScanOpts-class}}.
 #' @export
 BayeScanOpts<-function(threads=1, reps=3, n=5000, thin=10, nbp=20, pilot=5000, burn=50000, fdr=0.1) {
-	x<-new("BayeScanOpts", threads=threads, n=n, thin=thin, nbp=nbp, pilot=pilot, burn=burn, fdr=fdr)
+	x<-new("BayeScanOpts", threads=threads, reps=reps, n=n, thin=thin, nbp=nbp, pilot=pilot, burn=burn, fdr=fdr)
 	validObject(x, test=FALSE)
 	return(x)
 }
